@@ -16,18 +16,12 @@ def get_password_1(input_file):
         direction = line[0]
         offset = int(line[1:])
         if direction == "L":
-            num -= offset
+            num = (num - offset) % 100
         elif direction == "R":
-            num += offset
-
-        while num < 0:
-            num = num + 100
-
-        while num > 99:
-                num = num - 100
+            num = (num + offset) % 100
         
-        print(f"The dial is rotated {line} to point at {num}.")
 
+        print(f"The dial is rotated {line} to point at {num}.")
         if num == 0:
             password += 1
     print("The password is " + str(password))
@@ -99,6 +93,6 @@ def get_password_2(input_file):
 
 #get_password_2(sample_input_array)
 
-#get_password_2(sample_input_file)
+#get_password_1(sample_input_file)
 
-get_password_2(input_file)
+#get_password_1(input_file)
