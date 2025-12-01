@@ -34,65 +34,42 @@ def get_password_2(input_file):
 
     print("The dial starts by pointing at 50.")
     for line in input_file:
-
-        print('\n')
+        print("---")
         direction = line[0]
         offset = int(line[1:])
-
+        clicks = 0
         starting_num = num
-        clicks = 0 
-        final_clicks = 0
-
-        isFirstLoop = True
 
         if direction == "L":
-            num -= offset
+            #Calc for L is slightly funky because of negative offset, so check for starting number and ending number
+
+            diff = num - offset
+            num = (diff) % 100
+            clicks += abs((diff) // 100)
+            
+            if starting_num == 0:
+                clicks -= 1
+            if num == 0:
+                clicks += 1
+
         elif direction == "R":
-            num += offset
-
-        while num < 0:
-            num = num + 100
-            if not (starting_num == 0 and isFirstLoop):
-                clicks +=1
-            isFirstLoop = False
-
-        while num > 99:
-            num = num - 100
-            if not (starting_num == 0 and isFirstLoop):
-                clicks +=1
-            isFirstLoop = False
-
+            diff = num + offset
+            num = (diff) % 100
+            clicks = abs((diff) // 100)
         
-        '''
-        Do not count if it ends at 0.
-        if num == 0 and clicks == 0:
-            clicks += 1
-        '''
-
-        if num == 0:
-            final_clicks += 1
-            if clicks > 0:
-                clicks -=1
-
-
-        password += clicks + final_clicks
         
+
         print(f'The dial is rotated {line} to point at {num}.')
-
-        if final_clicks != 0:
-            print(f'It ended at 0 on the end of the rotation.')
-
-            if final_clicks != 1:
-                print(f"Hmm, something's weird here. Final_clicks was triggered {final_clicks} times.")
 
         if clicks != 0:
             print(f'During this rotation, it points at 0 x{clicks} time(s).')
+        password += clicks
 
 
     print("The password is " + str(password))
 
 #get_password_2(sample_input_array)
 
-#get_password_1(sample_input_file)
+#get_password_2(sample_input_file)
 
-#get_password_1(input_file)
+get_password_2(input_file)
