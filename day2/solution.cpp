@@ -176,9 +176,9 @@ void get_invalid_id_1(string input_file)
 
 int main()
 {
-    string sample_input = "sample_input.txt";
-    string input = "input.txt";
-    string test_input = "test_input.txt";
+    string sample_input = "input/sample_input.txt";
+    string input = "input/input.txt";
+    string test_input = "input/test_input.txt";
 
     //get_invalid_id_1(sample_input);
     //get_invalid_id_1(input);

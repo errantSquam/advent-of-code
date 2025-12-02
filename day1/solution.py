@@ -1,7 +1,7 @@
 
 import os 
-input_file = open(os.getcwd() + '/input.txt', 'r').read().split('\n')
-sample_input_file = open(os.getcwd() + '/sample_input.txt', 'r').read().split('\n')
+input_file = open(os.getcwd() + '/input/input.txt', 'r').read().split('\n')
+sample_input_file = open(os.getcwd() + '/input/sample_input.txt', 'r').read().split('\n')
 #print(input_file)
 
 sample_input_array = ["L50", "R1000"]

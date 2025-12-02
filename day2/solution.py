@@ -1,6 +1,6 @@
 import os 
-input_file = open(os.getcwd() + '/input.txt', 'r').read().split(',')
-sample_input_file = open(os.getcwd() + '/sample_input.txt', 'r').read().split(',')
+input_file = open(os.getcwd() + '/input/input.txt', 'r').read().split(',')
+sample_input_file = open(os.getcwd() + '/input/sample_input.txt', 'r').read().split(',')
 sample_array = ["11-22"]
 
 def check_invalid_id_2(id):

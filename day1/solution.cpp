@@ -51,7 +51,7 @@ void get_password_2(string input_file) {
 
     ofstream write_file;
 
-    write_file.open("answerfile_cpp.txt");
+    write_file.open("output/answerfile_cpp.txt");
 
     ifstream input(input_file);
 
@@ -122,9 +122,9 @@ void get_password_2(string input_file) {
 int main() {
 
 
-    string sample_input = "sample_input.txt";
-    string input = "input.txt";
-    string test_input = "test_input.txt";
+    string sample_input = "input/sample_input.txt";
+    string input = "input/input.txt";
+    string test_input = "input/test_input.txt";
 
     //get_password_2(sample_input);
     //get_password_2(test_input);
