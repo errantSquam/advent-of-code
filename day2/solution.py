@@ -4,18 +4,27 @@ sample_input_file = open(os.getcwd() + '/sample_input.txt', 'r').read().split(',
 sample_array = ["11-22"]
 
 def check_invalid_id_2(id):
-    for window_len in range(1, len(id)):
-        for window_start in range(len(id)):
-            if window_start + window_len * 2 > len(id):
-                break
+    for window_len in range(1, len(id)//2 + 1):
+            
 
-            #print(f"Winstart: {window_start} Winlen: {window_len}")
-            #print(f"Winstart: {window_start + window_len} Winlen: {window_start + window_len * 2}")
-            substring1 = id[window_start:window_start+window_len]
-            substring2 = id[window_start+window_len:window_start + window_len * 2]
+            if len(id) % (window_len) != 0:
+                continue
 
-            #print(f"{substring1} and {substring2}")
-            if substring1 == substring2:
+            substring = id[0:window_len]
+
+            repetitions = 1
+
+            isRepeated = True
+            while window_len * (repetitions + 1) <= len(id):
+                start_index = window_len*(repetitions)
+                end_index = start_index + window_len
+                temp_substring = id[start_index: end_index]
+                if temp_substring != substring:
+                    isRepeated = False 
+                    break 
+                repetitions += 1
+
+            if isRepeated:
                 return True
             
     return False
@@ -30,7 +39,6 @@ def get_invalid_id_2(input_file):
         invalid_ids = []
 
         for id in range(first_id, last_id+1):
-            print(f"ID {id}, ID Length: {len(str(id))}")
             if check_invalid_id_2(str(id)):
                 invalid_ids.append(id)
 
@@ -57,8 +65,6 @@ def get_invalid_id_1(input_file):
 
         for id in range(first_id, last_id+1):
             id_string = str(id)
-            #print(f"ID {id}, ID Length: {len(str(id))}")
-            #print(id_string[0:len(id_string)//2], id_string[len(id_string)//2: len(id_string)])
             if id_string[0:len(id_string)//2] == id_string[len(id_string)//2: len(id_string)]:
                 invalid_ids.append(id_string)
 
@@ -76,6 +82,7 @@ def get_invalid_id_1(input_file):
 #get_invalid_id_1(sample_input_file)
 #get_invalid_id_1(input_file)
 
-get_invalid_id_2(sample_input_file)           
-
+#get_invalid_id_2(sample_array)
+#get_invalid_id_2(sample_input_file)           
+get_invalid_id_2(input_file)
 
