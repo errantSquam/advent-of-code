@@ -47,10 +47,6 @@ def solve_largest_joltage_2(bank, battery_map, largest_joltage_array):
     
     return []
 
-    
-
-
-
 
 def solve_battery_2(input_file):
     
@@ -62,7 +58,6 @@ def solve_battery_2(input_file):
         for i in range(1, 10):
             battery_map[i] = []
 
-        #print(battery_map)
         for battery_index in range(len(bank)):
             current_battery = bank[battery_index]
             battery_map[int(current_battery)].append(battery_index)
