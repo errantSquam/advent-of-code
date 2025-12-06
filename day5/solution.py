@@ -58,9 +58,6 @@ def get_fresh_2(input):
             newStart = line[0]
             newEnd = line[1]
 
-            #print(f"current: ({currentStart}-{currentEnd})")
-            #print(f"new: {newStart} - {newEnd}")
-
             if currentStart == None:
                 currentStart = newStart 
 
@@ -75,6 +72,8 @@ def get_fresh_2(input):
 
             if newEnd > currentEnd:
                 currentEnd = newEnd
+
+                
     fresh_ranges.append([currentStart, currentEnd])
 
     #print(fresh_ranges)
