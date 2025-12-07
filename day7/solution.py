@@ -54,5 +54,34 @@ def split_tachyon_1(input):
         print_input(input)
     print(f"Tachyon beams split {times_split} times.")
 
-#split_tachyon_1(sample_input_file)
-split_tachyon_1(input_file)
+
+def split_tachyon_2(input):
+    input = parse_input(input)
+    
+    starting_location = input[0].index('S')    
+
+    dfs_memo = {}
+    def dfs_timelines(input, current_index, current_depth):
+        #Too unoptimized by default, must memo
+        if current_depth >= len(input):
+            return 1
+        
+        if (current_index, current_depth) in dfs_memo:
+            return dfs_memo[(current_index, current_depth)]
+        
+        if input[current_depth][current_index] == ".":
+            result = dfs_timelines(input, current_index, current_depth + 1)
+        
+        if input[current_depth][current_index] == "^":
+            result = dfs_timelines(input, current_index-1, current_depth +1) + dfs_timelines(input, current_index+1, current_depth + 1)
+
+        dfs_memo[(current_index, current_depth)] = result
+        return result
+        
+
+
+    print(f"Number of timelines: {dfs_timelines(input, starting_location, 1)}")
+
+#split_tachyon_2(sample_input_file)
+split_tachyon_2(input_file)
+#Done!! Ty for forcing me to learn and understand memoization
